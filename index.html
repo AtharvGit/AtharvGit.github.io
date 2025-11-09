@@ -3,42 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- 
-      EDIT THIS: 
-      Update the title to your name. This is what appears in the browser tab.
-    -->
-    <title>Atharv Awasare - Personal Portfolio</title>
-    
-    <!-- Load Tailwind CSS -->
+    <title>Atharv Awasare - Software Engineer</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- NEW: Import Fira Code font for a 'tech' feel -->
+    <!-- Google Fonts: Inter (main) and Fira Code (tech) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* This uses Tailwind's 'font-sans' which defaults to the 'Inter' font family.
-          It also sets a smooth scroll behavior when clicking on-page links.
-        */
+        /* Base Styling */
         body {
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-            
-            /* NEW: Subtle grid background for 'tech' feel */
-            /* This is a faint white grid on the dark background */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 24px 24px; /* Size of the grid squares */
+            font-family: 'Inter', sans-serif;
+            /* Subtle blueprint grid background */
+            background-image: 
+                linear-gradient(to right, rgba(63, 63, 70, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(63, 63, 70, 0.2) 1px, transparent 1px);
+            background-size: 3rem 3rem; /* 48px grid */
+            background-position: -1px -1px;
         }
 
-        /* NEW: Class to apply the Fira Code font */
+        /* Tech font for skills and pills */
         .font-code {
             font-family: 'Fira Code', monospace;
         }
 
-        /* NEW: Animation for header items
-        */
+        /* Initial load fade-in and slide-up animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -49,482 +39,432 @@
                 transform: translateY(0);
             }
         }
-
-        /* Class to apply the animation */
+        
         .fade-in-up {
-            /* Set opacity to 0 by default for elements that will animate */
-            opacity: 0;
-            animation: fadeInUp 0.7s ease-out forwards;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
         }
 
-        /* NEW: Animated gradient for the name
-        */
-        .animated-gradient {
-            background: linear-gradient(-45deg, #4f46e5, #7c3aed, #0ea5e9, #10b981);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-flow 10s ease infinite;
-        }
-
-        @keyframes gradient-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* NEW: Staggered animation delays */
+        /* Animation delays for staggered effect */
         .anim-delay-1 { animation-delay: 0.1s; }
         .anim-delay-2 { animation-delay: 0.2s; }
         .anim-delay-3 { animation-delay: 0.3s; }
         .anim-delay-4 { animation-delay: 0.4s; }
 
+        /* Scroll Animation Classes */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 <body class="bg-slate-900 text-slate-300 antialiased">
 
-    <!-- Main Content Container -->
-    <main class="container mx-auto max-w-4xl p-6 md:p-12">
+    <!-- 
+      Main container with max-width and center-align
+      p-6: Padding on all sides (mobile)
+      md:p-12: Padding on medium screens and up
+    -->
+    <main class="max-w-4xl mx-auto p-6 md:p-12">
 
-        <!-- Header Section: Name, Title, Bio, Links -->
-        <header class="flex flex-col md:flex-row md:justify-between md:items-start gap-8 mb-16">
-            <!-- Left Side: Name, Title, Bio -->
-            <div class="space-y-3">
-                <!-- 
-                  NEW: Profile Picture
-                  EDIT THIS: 
-                  Replace the `src` with a link to your own profile picture.
-                -->
-                <img 
-                  src="https://placehold.co/200x200/475569/94a3b8?text=AA" 
-                  alt="Profile Picture" 
-                  class="w-24 h-24 rounded-full border-2 border-slate-700 shadow-md fade-in-up anim-delay-1"
-                >
-
-                <!-- 
-                  FIXED: Swapped h1 and h2
-                  Your name is now the large animated text.
-                -->
-                <h1 class="text-4xl md:text-5xl font-bold animated-gradient fade-in-up anim-delay-1">
+        <!-- 
+          Header Section: Profile Pic, Name, Title, Links
+          flex-col: Stack elements vertically on mobile
+          md:flex-row: Arrange elements side-by-side on medium screens
+        -->
+        <header class="flex flex-col md:flex-row justify-between items-start mb-16">
+            
+            <!-- Left Column: Pic, Name, Title, Bio, Nav -->
+            <div class="flex-1">
+                
+                <!-- EDIT THIS: Profile Picture Placeholder -->
+                <!-- Replace the src with a link to your own photo -->
+                <img src="https://placehold.co/128x128/334155/e2e8f0?text=AA" 
+                     alt="Profile Picture" 
+                     class="w-32 h-32 rounded-full mb-6 border-4 border-slate-700 fade-in-up">
+                
+                <!-- Name -->
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-50 mb-2 fade-in-up anim-delay-1">
                     Atharv Awasare
                 </h1>
-                <!-- <h2 class="text-xl md:text-2xl font-medium text-slate-400 fade-in-up anim-delay-2">
+                
+                <!-- Title -->
+                <!-- <h2 class="text-xl md:text-2xl font-semibold text-indigo-400 mb-6 fade-in-up anim-delay-2">
                     Software Engineer
                 </h2> -->
-                <p class="text-base text-slate-400 max-w-md fade-in-up anim-delay-3">
-                    <!-- YOUR BRIEF BIO HERE - UPDATED -->
-                    Motivated master's student in Information Technology with two years of experience as a Software Engineer. Solid knowledge in Python, web scraping, data analysis, and automation.
-                </p>
                 
-                <!-- On-page navigation for larger screens -->
-                <nav class="hidden md:flex gap-4 pt-2 fade-in-up anim-delay-4 flex-wrap">
-                    <a href="#experience" class="font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">Experience</a>
-                    <!-- RE-ADDED PROJECTS LINK -->
-                    <a href="#projects" class="font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">Projects</a>
-                    <a href="#skills" class="font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">Skills</a>
-                    <a href="#awards" class="font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">Awards</a>
-                    <a href="#languages" class="font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">Languages</a>
-                    <a href="#activities" class="font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">Activities</a>
-                    <a href="#interests" class="font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">Interests</a>
+                <!-- 
+                  EDIT THIS: Bio Section 
+                  Updated with your professional and project experience.
+                -->
+                <p class="text-lg text-slate-400 max-w-xl mb-8 fade-in-up anim-delay-3">
+                    Motivated Master's student in Information Technology with two years of professional experience as a Software Engineer. Proven expertise in Python, automation, and real-time data analysis for international clients. Currently expanding my skillset through advanced academic projects in computer vision and full-stack IoT solutions. Eager to apply this blend of professional experience and broad technical skills in a challenging part-time role.
+                </p>
+
+                <!-- Navigation Links -->
+                <nav class="flex flex-wrap gap-x-6 gap-y-2 text-lg font-medium text-slate-500 fade-in-up anim-delay-4">
+                    <a href="#experience" class="hover:text-indigo-400 transition-colors">Experience</a>
+                    <a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a>
+                    <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
+                    <a href="#education" class="hover:text-indigo-400 transition-colors">Education</a>
+                    <a href="#awards" class="hover:text-indigo-400 transition-colors">Awards</a>
+                    <a href="#languages" class="hover:text-indigo-400 transition-colors">Languages</a>
+                    <a href="#activities" class="hover:text-indigo-400 transition-colors">Activities</a>
                 </nav>
             </div>
 
-            <!-- Right Side: Contact Links -->
-            <div class="flex flex-row md:flex-col gap-4 items-start fade-in-up anim-delay-4">
-                <!-- 
-                  RE-ADDED GITHUB LINK
-                  EDIT THIS: Update with your GitHub username
-                -->
-                <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">
+            <!-- Right Column: Contact Links -->
+            <div class="flex-shrink-0 flex md:flex-col gap-4 mt-8 md:mt-4 md:items-end w-full md:w-auto fade-in-up anim-delay-4">
+                
+                <!-- EDIT THIS: GitHub Link -->
+                <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors w-full md:w-auto justify-center">
                     <!-- GitHub Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                    GitHub
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.165 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                    <span>GitHub</span>
                 </a>
-                <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">
+                
+                <!-- EDIT THIS: LinkedIn Link -->
+                <a href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors w-full md:w-auto justify-center">
                     <!-- LinkedIn Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
-                    LinkedIn
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.698h-3v-11h2.869v1.368h.04c.411-.772 1.422-1.583 2.827-1.583 3.02 0 3.578 1.989 3.578 4.575v6.64h-3z"></path></svg>
+                    <span>LinkedIn</span>
                 </a>
                 
                 <!-- Email Copy Button -->
-                <button id="copy-email-btn" class="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">
-                    <!-- Mail Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-500"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span id="copy-email-text">Copy Email</span>
+                <button id="copy-email" class="flex items-center gap-2 p-3 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors w-full md:w-auto justify-center">
+                    <!-- Email Icon -->
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2zm18 0v.511l-8 6.223-8-6.223V5h16zM5 19V6.98l8 6.223 8-6.223V19H5z"></path></svg>
+                    <span id="copy-text">Copy Email</span>
                 </button>
             </div>
         </header>
 
         <!-- Experience Section -->
-        <section id="experience" class="mb-16">
+        <section id="experience" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Experience</h2>
-
-            <!-- 
-              EDIT THIS: 
-              Add your work experience items here. 
-              Copy and paste the entire `<div class="mb-8">...</div>` block for each new job.
-            -->
             
             <!-- Experience Item 1 -->
-            <div class="mb-8">
+            <div class="mb-8 scroll-fade-in">
                 <div class="flex justify-between items-baseline flex-wrap">
                     <h3 class="text-lg font-semibold text-slate-100">
-                        <!-- YOUR JOB TITLE HERE -->
-                        Software Engineer
+                        Software Engineer - Merkle
                     </h3>
                     <span class="text-sm text-slate-500 font-medium">
-                        <!-- DATES HERE -->
-                        03/2023 – 09/2025
+                        Mar 2023 - Sep 2025
                     </span>
                 </div>
-                <h4 class="text-md font-medium text-slate-400 mb-2">
-                    <!-- COMPANY NAME & LOCATION HERE -->
-                    Merkle · India
-                </h4>
-                <ul class="list-disc list-outside ml-5 space-y-1 text-slate-400">
-                    <!-- 
-                      Add your key responsibilities or achievements as <li> items.
-                    -->
-                    <li>Developed automated Python scripts for international clients in technology, retail, and luxury sectors.</li>
-                    <li>Delivered and modified over 500 production-ready scripts integrated into live systems.</li>
+                <p class="text-slate-400 mt-1 mb-4">
+                    Developed and modified over 500 automated Python scripts for international clients in technology, retail, and luxury sectors, integrating them into live production systems.
+                </p>
+                <ul class="list-disc list-inside text-slate-400 space-y-1">
                     <li>Trained new employees and supported successful project execution.</li>
+                    <li>Delivered and modified scripts integrated into live systems.</li>
                 </ul>
             </div>
 
             <!-- Experience Item 2 -->
-            <div class="mb-8">
+            <div class="mb-8 scroll-fade-in">
                 <div class="flex justify-between items-baseline flex-wrap">
                     <h3 class="text-lg font-semibold text-slate-100">
-                        <!-- YOUR JOB TITLE HERE -->
-                        Data Analyst
+                        Data Analyst - Merkle
                     </h3>
                     <span class="text-sm text-slate-500 font-medium">
-                        <!-- DATES HERE -->
-                        08/2022 – 03/2023
+                        Aug 2022 - Mar 2023
                     </span>
                 </div>
-                <h4 class="text-md font-medium text-slate-400 mb-2">
-                    <!-- COMPANY NAME & LOCATION HERE -->
-                    Merkle · India
-                </h4>
-                <ul class="list-disc list-outside ml-5 space-y-1 text-slate-400">
-                    <li>Conducted real-time web scraping for global websites using Python.</li>
+                <p class="text-slate-400 mt-1 mb-4">
+                    Conducted real-time web scraping for global websites using Python.
+                </p>
+                <ul class="list-disc list-inside text-slate-400 space-y-1">
                     <li>Contributed to onboarding a major European luxury goods client.</li>
                     <li>Efficiently processed 16,000 SKUs in 2.5 months, receiving client recognition.</li>
                 </ul>
             </div>
-            
-            <!-- Add more experience items here -->
-
         </section>
 
-        <!-- 
-          NEW: Projects Section Re-Added
-        -->
-        <section id="projects" class="mb-16">
+        <!-- Projects Section -->
+        <section id="projects" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Projects</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <!-- Project Card 1: Traffic Light Detection -->
-                <div class="project-card bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-700 hover:scale-[1.01] transition-all duration-200">
-                    <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-lg font-semibold text-slate-100">
-                            Real-Time Traffic Sign Detection (TH-OWL)
-                        </h3>
-                        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400" title="View on GitHub">
-                            <!-- External Link Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                        </a>
-                    </div>
-                    <p class="text-sm text-slate-400 mb-4">
-                        Developed and trained a computer vision model using YOLOv5 and PyTorch to detect and classify traffic lights/signs. Contributed to the 'Neural Team' project, utilizing the CARLA simulator for data generation and model validation.
-                    </p>
-                    <!-- Tech stack pills -->
-                    <div class="flex flex-wrap gap-2">
-                        <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
-                        <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">YOLOv5</span>
-                        <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">PyTorch</span>
-                        <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">CARLA</span>
-                        <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">OpenCV</span>
-                    </div>
+            <!-- Project 1: Traffic Light Detection -->
+            <div class="mb-8 scroll-fade-in">
+                <!-- Title and Link Row -->
+                <div class="flex justify-between items-baseline flex-wrap">
+                    <h3 class="text-lg font-semibold text-slate-100">
+                        Real-Time Traffic Sign Detection (TH-OWL)
+                    </h3>
+                    <!-- EDIT THIS: Add your project's GitHub link -->
+                    <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-indigo-400 transition-colors duration-200" title="View on GitHub">
+                        View on GitHub
+                        <!-- External Link Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
                 </div>
-
-                <!-- Project Card 2: IoT Waste Management -->
-                <div class="project-card bg-slate-800 p-6 rounded-lg shadow-lg border border-slate-700 hover:scale-[1.01] transition-all duration-200">
-                    <div class="flex justify-between items-center mb-2">
-                        <h3 class="text-lg font-semibold text-slate-100">
-                            IoT Waste Management Dashboard (TH-OWL)
-                        </h3>
-                        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400" title="View on GitHub">
-                            <!-- External Link Icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                        </a>
-                    </div>
-                    <p class="text-sm text-slate-400 mb-4">
-                        Built a full-stack web application to visualize real-time IoT sensor data. Developed a Flask backend for data processing and a route optimization algorithm to calculate the most efficient waste collection paths.
-                    </p>
-                    <!-- Tech stack pills -->
-                    <div class="flex flex-wrap gap-2">
-                        <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
-                        <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Flask</span>
-                        <span class="font-code inline-block bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">HTML</span>
-                        <span class="font-code inline-block bg-yellow-900/50 text-yellow-300 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
-                        <span class="font-code inline-block bg-purple-900/50 text-purple-300 text-xs font-medium px-2.5 py-0.5 rounded-full">IoT</span>
-                    </div>
+                <!-- Description -->
+                <p class="text-slate-400 my-2">
+                    Analyse, trained and deployed a computer vision model using YOLOv5 and PyTorch to detect and classify traffic lights/signs. Contributed to the 'Neural Team' project, utilizing the CARLA simulator for data generation and model validation.
+                </p>
+                <!-- Tech stack pills -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                    <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">YOLOv5</span>
+                    <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">PyTorch</span>
+                    <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">CARLA</span>
+                    <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">OpenCV</span>
                 </div>
+            </div>
 
+            <!-- Project 2: IoT Waste Management -->
+            <div class="mb-8 scroll-fade-in">
+                <!-- Title and Link Row -->
+                <div class="flex justify-between items-baseline flex-wrap">
+                    <h3 class="text-lg font-semibold text-slate-100">
+                        IoT Waste Management Dashboard (TH-OWL)
+                    </h3>
+                    <!-- EDIT THIS: Add your project's GitHub link -->
+                    <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-sm font-medium text-slate-500 hover:text-indigo-400 transition-colors duration-200" title="View on GitHub">
+                        View on GitHub
+                        <!-- External Link Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+                <!-- Description -->
+                <p class="text-slate-400 my-2">
+                    Built a full-stack web application to visualize real-time IoT sensor data. Developed a Flask backend for data processing and a route optimization algorithm to calculate the most efficient waste collection paths.
+                </p>
+                <!-- Tech stack pills -->
+                <div class="flex flex-wrap gap-2">
+                    <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Python</span>
+                    <span class="font-code inline-block bg-green-900/50 text-green-300 text-xs font-medium px-2.5 py-0.5 rounded-full">Flask</span>
+                    <span class="font-code inline-block bg-blue-900/50 text-blue-300 text-xs font-medium px-2.5 py-0.5 rounded-full">HTML</span>
+                    <span class="font-code inline-block bg-yellow-900/50 text-yellow-300 text-xs font-medium px-2.5 py-0.5 rounded-full">JavaScript</span>
+                    <span class="font-code inline-block bg-purple-900/50 text-purple-300 text-xs font-medium px-2.5 py-0.5 rounded-full">IoT</span>
+                </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="mb-16">
+        <section id="skills" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Technical Skills</h2>
             
-            <!-- 
-              EDIT THIS: 
-              Add your skills here.
-            -->
-
             <!-- Programming Languages -->
-            <h3 class="text-lg font-semibold text-slate-100 mb-4">Programming Languages</h3>
+            <h3 class="text-lg font-semibold text-slate-100 mb-4 scroll-fade-in">Programming Languages</h3>
             <div class="flex flex-wrap gap-3 mb-8">
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Python</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">JavaScript</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">C++</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">SQL</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">HTML</span>
+                <!-- Skill pills with hover effects -->
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Python</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">JavaScript</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">C++</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">SQL</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">HTML</span>
             </div>
 
             <!-- Tools & Frameworks -->
-            <h3 class="text-lg font-semibold text-slate-100 mb-4">Tools & Frameworks</h3>
+            <h3 class="text-lg font-semibold text-slate-100 mb-4 scroll-fade-in">Tools & Frameworks</h3>
             <div class="flex flex-wrap gap-3 mb-8">
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Selenium</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Postman</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">JIRA</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Bitbucket</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">MS Office</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Snowflake</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Selenium</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Postman</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">JIRA</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Bitbucket</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">MS Office</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Snowflake</span>
             </div>
 
             <!-- Web Technologies -->
-            <h3 class="text-lg font-semibold text-slate-100 mb-4">Web Technologies</h3>
+            <h3 class="text-lg font-semibold text-slate-100 mb-4 scroll-fade-in">Web Technologies</h3>
             <div class="flex flex-wrap gap-3">
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">APIs</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">XPATH</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">JSON</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Proxy Handling</span>
-                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">BeautifulSoup</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">APIs</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">XPATH</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">JSON</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Proxy Handling</span>
+                <span class="font-code skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">BeautifulSoup</span>
             </div>
         </section>
 
 
         <!-- Education Section -->
-        <section id="education" class="mb-16">
+        <section id="education" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Education</h2>
             
-            <!-- 
-              EDIT THIS: 
-              Add your education items here.
-            -->
-            
             <!-- Education Item 1 -->
-            <div>
+            <div class="scroll-fade-in">
                 <div class="flex justify-between items-baseline flex-wrap">
                     <h3 class="text-lg font-semibold text-slate-100">
-                        <!-- YOUR DEGREE/CERTIFICATION HERE -->
                         M.Sc. Information Technology
                     </h3>
-                    <span class="text-sm text-slate-500 font-medium">
-                        <!-- DATES HERE -->
-                        On-Going
-                    </span>
+                    <span class="text-sm text-slate-500 font-medium">On-Going</span>
                 </div>
-                <h4 class="text-md font-medium text-slate-400">
-                    <!-- INSTITUTION NAME & LOCATION HERE -->
-                    Technische Hochschule Ostwestfalen-Lippe (TH OWL), Germany
-                </h4>
+                <p class="text-slate-400">Technische Hochschule Ostwestfalen-Lippe (TH OWL), Germany</p>
             </div>
 
             <!-- Education Item 2 -->
-            <div class="mt-4">
+            <div class="mt-4 scroll-fade-in">
                 <div class="flex justify-between items-baseline flex-wrap">
                     <h3 class="text-lg font-semibold text-slate-100">
-                        <!-- YOUR DEGREE/CERTIFICATION HERE -->
                         B.E. in Electronics and Telecommunication Engineering
                     </h3>
-                    <span class="text-sm text-slate-500 font-medium">
-                        <!-- DATES HERE -->
-                        2018 – 2022
-                    </span>
+                    <span class="text-sm text-slate-500 font-medium">2018 - 2022</span>
                 </div>
-                <h4 class="text-md font-medium text-slate-400">
-                    <!-- INSTITUTION NAME & LOCATION HERE -->
-                    Savitribai Phule Pune University, India
-                </h4>
-                <!-- ADDED GRADE -->
-                <p class="text-sm text-slate-500 mt-1">Grade: 1.4 (German System Equivalent)</p>
+                <p class="text-slate-400">Savitribai Phule Pune University, India (Grade: 1.4)</p>
             </div>
-            
-            <!-- Add more education items here if needed -->
-
         </section>
 
-        <!-- 
-          NEW: Awards Section 
-        -->
-        <section id="awards" class="mb-16">
+        <!-- Awards Section -->
+        <section id="awards" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Awards & Recognition</h2>
             
-            <!-- 
-              EDIT THIS: 
-              Add your certification items here.
-            -->
-            
             <!-- Award Item 1 -->
-            <div class="mb-4">
+            <div class="mb-4 scroll-fade-in">
                 <div class="flex justify-between items-baseline flex-wrap">
                     <h3 class="text-lg font-semibold text-slate-100">
-                        <!-- YOUR CERTIFICATION HERE -->
                         "Make It Real Award" (Team Award)
                     </h3>
-                    <span class="text-sm text-slate-500 font-medium">
-                        <!-- DATE HERE -->
-                        07/2024
-                    </span>
+                    <span class="text-sm text-slate-500 font-medium">Jul 2024</span>
                 </div>
-                <h4 class="text-md font-medium text-slate-400">
-                    <!-- ISSUING BODY HERE -->
-                    Delivered 1,650 scripts in Q2; trained over 22 team members.
-                </h4>
+                <p class="text-slate-400">Delivered 1,650 scripts in Q2; trained over 22 team members for client onboarding.</p>
             </div>
-            
+
             <!-- Award Item 2 -->
-            <div>
+            <div class="scroll-fade-in">
                 <div class="flex justify-between items-baseline flex-wrap">
                     <h3 class="text-lg font-semibold text-slate-100">
-                        <!-- YOUR CERTIFICATION HERE -->
                         Client Appreciation (Team Award)
                     </h3>
-                    <span class="text-sm text-slate-500 font-medium">
-                        <!-- DATE HERE -->
-                        12/2022
-                    </span>
+                    <span class="text-sm text-slate-500 font-medium">Dec 2022</span>
                 </div>
-                <h4 class="text-md font-medium text-slate-400">
-                    <!-- ISSUING BODY HERE -->
-                    Acknowledged for high data quality and timely delivery for 16,000 SKUs.
-                </h4>
+                <p class="text-slate-400">Acknowledged for high data quality and timely delivery during a scale-up involving 16,000 SKUs.</p>
             </div>
-
         </section>
 
-        <!-- 
-          NEW: Languages Section 
-        -->
-        <section id="languages" class="mb-16">
+        <!-- Languages Section -->
+        <section id="languages" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Languages</h2>
             
             <div class="flex flex-wrap gap-3">
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">English (Fluent)</span>
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Hindi (Native)</span>
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Marathi (Native)</span>
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">German (A2 - in progress)</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">English (Fluent)</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Hindi (Native)</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Marathi (Native)</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.aws-600 scroll-fade-in">German (A2 - in progress)</span>
             </div>
         </section>
 
-        <!-- 
-          NEW: Extra-Curricular Activities Section 
-        -->
-        <section id="activities" class="mb-16">
+        <!-- Extra-Curricular Activities Section -->
+        <section id="activities" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Extra-Curricular Activities</h2>
             
             <!-- Activity Item 1 -->
-            <div>
+            <div class="scroll-fade-in">
                 <div class="flex justify-between items-baseline flex-wrap">
                     <h3 class="text-lg font-semibold text-slate-100">
-                        Co-Editor on the Board of Directors
+                        Co-Editor, Board of Directors
                     </h3>
-                    <span class="text-sm text-slate-500 font-medium">
-                        10/2019 – 07/2020
-                    </span>
+                    <span class="text-sm text-slate-500 font-medium">2019 - 2020</span>
                 </div>
-                <h4 class="text-md font-medium text-slate-400">
-                    Rotaract Club of DYPVP
-                </h4>
+                <p class="text-slate-400">Rotaract Club of DYPVP</p>
             </div>
         </section>
 
-        <!-- 
-          NEW: Interests Section 
-        -->
-        <section id="interests" class="mb-16">
+        <!-- Interests Section -->
+        <section id="interests" class="mb-16 scroll-fade-in">
             <h2 class="text-2xl font-bold text-indigo-400 mb-8">Interests</h2>
             
             <div class="flex flex-wrap gap-3">
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Drawing</span>
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Photoshop</span>
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Stock Market</span>
-                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full">Cooking</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Drawing</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Photoshop</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Stock Market</span>
+                <span class="skill-pill bg-slate-700 text-slate-200 text-sm font-medium px-4 py-1.5 rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-slate-600 scroll-fade-in">Cooking</span>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="text-center text-sm text-slate-500 mt-12 border-t border-slate-700 pt-8">
-            <p>
-                <!-- EDIT THIS: Update with your name and the current year. -->
-                &copy; 2025 Atharv Awasare. All rights reserved.
-            </p>
+        <footer class="text-center text-slate-500 text-sm mt-16 scroll-fade-in">
+            <!-- EDIT THIS: Update the year -->
+            &copy; 2025 Atharv Awasare. All rights reserved.
         </footer>
 
     </main>
-
+    
+    <!-- JavaScript for Email Copy and Scroll Animations -->
     <script>
-        // JavaScript for the "Copy Email" button
-        document.getElementById('copy-email-btn').addEventListener('click', function() {
-            // --- EDIT THIS: Set your email address ---
-            const email = 'atharvawasare9@gmail.com';
-            // --- ---
-            
-            const btn = document.getElementById('copy-email-btn');
-            const btnText = document.getElementById('copy-email-text');
-            
-            // Use execCommand for compatibility
+        // Email Copy Functionality
+        const copyBtn = document.getElementById('copy-email');
+        const copyText = document.getElementById('copy-text');
+        
+        // EDIT THIS: Your email address
+        const email = 'atharvawasare9@gmail.com';
+
+        copyBtn.addEventListener('click', () => {
+            // Use a temporary textarea to copy to clipboard
             const textarea = document.createElement('textarea');
             textarea.value = email;
-            textarea.style.position = 'fixed'; // Prevent scrolling to bottom
-            textarea.style.opacity = '0';
+            textarea.style.position = 'fixed'; // Avoid scrolling
             document.body.appendChild(textarea);
-            
             textarea.select();
             
             try {
-                document.execCommand('copy');
-                // Visual feedback
-                btnText.textContent = 'Copied!';
-                btn.classList.add('text-green-500'); // Brighter green for dark mode
-                btn.classList.remove('hover:text-indigo-400');
-                
-                // Reset after 2 seconds
-                setTimeout(() => {
-                    btnText.textContent = 'Copy Email';
-                    btn.classList.remove('text-green-500');
-                    btn.classList.add('hover:text-indigo-400');
-                }, 2000);
-                
+                // Use the modern clipboard API
+                navigator.clipboard.writeText(email).then(() => {
+                    // Success
+                    copyText.textContent = 'Copied!';
+                    copyBtn.classList.add('text-green-400');
+                    setTimeout(() => {
+                        copyText.textContent = 'Copy Email';
+                        copyBtn.classList.remove('text-green-400');
+                    }, 2000);
+                }).catch(err => {
+                    // Fallback for older browsers
+                    document.execCommand('copy');
+                    copyText.textContent = 'Copied!';
+                    copyBtn.classList.add('text-green-400');
+                    setTimeout(() => {
+                        copyText.textContent = 'Copy Email';
+                        copyBtn.classList.remove('text-green-400');
+                    }, 2000);
+                });
             } catch (err) {
-                console.error('Failed to copy email: ', err);
-                btnText.textContent = 'Error!';
-                btn.classList.add('text-red-500'); // Brighter red
-                
+                // Fallback for very old browsers
+                document.execCommand('copy');
+                copyText.textContent = 'Copied!';
+                copyBtn.classList.add('text-green-400');
                 setTimeout(() => {
-                    btnText.textContent = 'Copy Email';
-                    btn.classList.remove('text-red-500');
+                    copyText.textContent = 'Copy Email';
+                    copyBtn.classList.remove('text-green-400');
                 }, 2000);
             }
             
             document.body.removeChild(textarea);
         });
+
+        /*
+          JavaScript for Scroll Animations
+          This code watches for elements with the 'scroll-fade-in' class
+          and adds the 'is-visible' class when they enter the screen.
+        */
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once it's visible
+                    }
+                });
+            }, {
+                rootMargin: '0px 0px -50px 0px' // Trigger a little before it's fully in view
+            });
+
+            // Find all elements to observe
+            const targets = document.querySelectorAll('.scroll-fade-in');
+            targets.forEach((target) => {
+                observer.observe(target);
+            });
+        });
+
     </script>
 </body>
 </html>
